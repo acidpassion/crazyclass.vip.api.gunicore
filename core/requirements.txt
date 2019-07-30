@@ -1,0 +1,11 @@
+Flask
+Flask-Bcrypt
+Flask-Migrate
+flask-restplus
+Flask-Script
+Flask-SQLAlchemy
+Flask-Testing
+PyJWT
+SQLAlchemy
+Werkzeug
+gunicorn
