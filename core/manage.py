@@ -3,7 +3,6 @@ import unittest
 
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
-from werkzeug.contrib.fixers import ProxyFix
 
 from app import blueprint
 from app.main import create_app, db
@@ -11,8 +10,6 @@ from app.main.model import user, blacklist
 
 app = create_app(os.getenv('BOILERPLATE_ENV') or 'dev')
 app.register_blueprint(blueprint)
-app.wsgi_app = ProxyFix(app.wsgi_app)
-
 
 app.app_context().push()
 
