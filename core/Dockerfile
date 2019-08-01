@@ -18,4 +18,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD [ "gunicorn", "-c", "gunicorn_ini.py", "manage:app" ]
+CMD [ "gunicorn", "-c", "gunicorn_ini.py", "flask_app:app" ]

@@ -6,13 +6,6 @@ from .main.controller.auth_controller import api as auth_ns
 
 blueprint = Blueprint('api', __name__)
 
-@Property
-def specs_url(self):
-    """Monkey patch for HTTPS"""
-    return url_for(self.endpoint('specs'), _external=True, _scheme='https')
-
-    Api.specs_url = specs_url
-
 api = Api(blueprint,
           title='FLASK RESTPLUS API BOILER-PLATE WITH JWT',
           version='1.0',
