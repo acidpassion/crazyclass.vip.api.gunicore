@@ -1,6 +1,5 @@
 FROM alpine:3.7
 
-MAINTAINER Matthieu Petiteau "mpetiteau.pro@gmail.com"
 
 RUN apk update && \
     apk add build-base python3 python3-dev libffi-dev libressl-dev && \
@@ -18,4 +17,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD [ "gunicorn", "-c", "gunicorn_ini.py", "flask_app:app" ]
+CMD [ "gunicorn", "-c", "gunicorn_ini.py", "manage:app" ]
