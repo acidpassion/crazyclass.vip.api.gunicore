@@ -1,20 +1,17 @@
-FROM alpine:3.7
+FROM python:3.7.2-alpine3.9
 
+COPY ./requirements.txt /app/requirements.txt
 
-RUN apk update && \
-    apk add build-base python3 python3-dev libffi-dev libressl-dev && \
-    cd /usr/local/bin && \
-    ln -s /usr/bin/python3 python && \
-    pip3 install --upgrade pip
+WORKDIR /app
 
-ENV APP_PATH /usr/src/app
+ENV PORT=8080
 
-RUN mkdir -p $APP_PATH
-WORKDIR $APP_PATH/core
+EXPOSE 8080
 
-COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
-COPY . .
+COPY . /app
 
-CMD [ "gunicorn", "-c", "gunicorn_ini.py", "manage:app" ]
+ENTRYPOINT [ "python" ]
+
+CMD [ "server.py --threaded" ]
