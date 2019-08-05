@@ -18,4 +18,4 @@ service.add_resource(PetsController,
 if __name__ == '__main__':
     settings.config_logs()
     app.config["mongo"] = MongoDb()
-    app.run(debug=True, port=settings.APP_PORT)
+    app.run(debug=True, port=settings.APP_PORT, host="0.0.0.0")
